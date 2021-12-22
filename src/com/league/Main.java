@@ -44,7 +44,7 @@ public class Main {
 
         LocalDate date = LocalDate.of(2021, 10, 6);
 
-
+        matchService.displayHeldMatches();
 
 
     }
