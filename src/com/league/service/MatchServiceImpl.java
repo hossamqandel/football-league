@@ -205,16 +205,10 @@ public class MatchServiceImpl implements MatchService {
 
 
     private void updateResultsTable(int teamId, int matchPoints, int scoredGoals, int concededGoals) {
-
+        // 1- Write select statement to get current result for a team
         int gfFromDB = 0;
         int gaFromDB = 0;
         int totalPointsFromDB = 0;
-        // 1- Write select statement to get current result for a team
-        // select * from table where team_Id = 1;
-
-        //pointDb = 3;
-        //goalsDb = 4;
-        //concededGoalsDb = 2;
 
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
@@ -247,14 +241,14 @@ public class MatchServiceImpl implements MatchService {
         }
 
 
-        //2- calculate new values
+        //2- Calculate new values by ( grab Old Values from DB then Sum Them With The new Values )
         int newPoints = matchPoints + totalPointsFromDB;
         int newGoals = scoredGoals + gfFromDB;
         int newConcededGoals = concededGoals + gaFromDB;
 
 
         //3- Write update statement to edit the team result
-        // update table set team_Points = newPoints, team_Goals = newGoals, conceded_Goals = newConcededGoals where team_id = ?
+        // Concept: update table set team_Points = newPoints, team_Goals = newGoals, conceded_Goals = newConcededGoals where team_id = ?
         Connection myCon = DBConnect.connectDatabase();
         PreparedStatement myPS = null;
         try {

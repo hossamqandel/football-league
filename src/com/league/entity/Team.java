@@ -1,7 +1,5 @@
 package com.league.entity;
 
-import java.util.List;
-
 public class Team {
 
     private String name;

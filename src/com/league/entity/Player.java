@@ -1,7 +1,5 @@
 package com.league.entity;
 
-import java.sql.Blob;
-
 public class Player {
 
     private String name;

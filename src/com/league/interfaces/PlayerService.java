@@ -6,22 +6,22 @@ public interface PlayerService {
 
 
     public void addPlayer(Player newPlayer);
-    //To Save a Player in DB
+    //To Add a New Player in DB
 
     public void displayPlayerInfo(String playerName);
-    //Load All Player Info
+    //To Display The Data of A Specific Player
 
 
     public void displayPlayerPosition(String playerName);
-    //Return Player Position
+    //Display Player Position
 
     public void displayPlayerRoleWithDescription(String playerName);
-    //Return Player RoleWithDescription
+    //Display Player RoleWithDescription
 
 
     public void updatePlayer(Player oldPlayer, int playerID);
     //Load Player By Name From DB
-    //Update Player By oldPlayer Then Save Changes
+    //Then Update Player By oldPlayer Then Save Changes
 
 
     public Player searchPlayer(int playerNumber, String playerName, int teamId);
@@ -29,4 +29,5 @@ public interface PlayerService {
 
 
     public void deletePlayer(String playerName);
+    //NOT Important Funcation
 }

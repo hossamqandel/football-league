@@ -6,12 +6,12 @@ public interface TeamService {
 
 
     public void addTeam(Team newTeam);
-    //To Save a Team in DB
+    //To Add a New Team in DB
 
 
     public void updateTeam(Team oldTeam);
     //Load Team By ID From DB
-    //Update Team By oldTeam Then Save Changes
+    //Then Update Team By oldTeam Then Save Changes
 
 
     public Team getTeamById(int teamId);
@@ -26,5 +26,5 @@ public interface TeamService {
     //Return Team Players
 
     public void deleteTeam(String teamName);
-
+    //NOT Important Funcation
 }

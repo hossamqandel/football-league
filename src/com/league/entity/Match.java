@@ -1,7 +1,6 @@
 package com.league.entity;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Match {
 
