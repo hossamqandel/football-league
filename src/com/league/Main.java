@@ -37,9 +37,9 @@ public class Main {
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  " + "By George,Samy And Hossam");
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
 
-//        Player mohamedSalah = new Player("Mohamed Salah", 29, 11, 1, "FWD", "RW - Egyption King", 15, false, 9.4);
-//        Player sadioMane = new Player("Sadio Mane", 29, 10, 1, "FWD", "LW - Superstar", 7, false, 9.1);
-//        Player virgilVanDijk = new Player("Virgil van Dijk", 30, 4, 1, "Def", "CB - Gladiator", 1, true, 8.4);
+        Player mohamedSalah = new Player("Mohamed Salah", 29, 11, 1, "FWD", "RW - Egyption King", 15, false, 9.4);
+        Player sadioMane = new Player("Sadio Mane", 29, 10, 1, "FWD", "LW - Superstar", 7, false, 9.1);
+        Player virgilVanDijk = new Player("Virgil van Dijk", 30, 4, 1, "Def", "CB - Gladiator", 1, true, 8.4);
 
 
         LocalDate date = LocalDate.of(2021, 10, 6);
