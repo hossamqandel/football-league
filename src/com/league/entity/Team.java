@@ -13,8 +13,6 @@ public class Team {
 
 
     //Constructor
-
-
     public Team(String name) {
         this.name = name;
     }
@@ -27,5 +25,5 @@ public class Team {
     public void setName(String name) {
         this.name = name;
     }
-    
+
 }
