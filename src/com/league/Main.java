@@ -22,6 +22,7 @@ import java.sql.*;
 // TOOLS Package
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Main {
@@ -45,8 +46,14 @@ public class Main {
 
         LocalDate date = LocalDate.of(2021, 10, 6);
 
-        MatchPrinter.printMatches(matchService.displayMatches());
+        List<Match> matchesList = matchService.displayMatches();
+        List<Match> matchesList2 = matchService.displayHeldMatches();
+        List<Match> matchesList3 = matchService.displayToBeHeldMatches();
 
+        for (Match match: matchesList3) {
+            MatchPrinter.printMatches(match);
+            System.out.println();
+        }
 
     }
 

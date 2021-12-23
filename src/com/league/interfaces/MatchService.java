@@ -10,14 +10,14 @@ public interface MatchService {
     public Match addMatch(Match newMatch);
     //To Save a Match in DB
 
-    public Match displayMatches();
+    public List<Match> displayMatches();
     //To Display All Matches Without filter
 
-    public void displayHeldMatches();
+    public List<Match>  displayHeldMatches();
     //To Display Played Matches
 
 
-    public void displayToBeHeldMatches();
+    public List<Match> displayToBeHeldMatches();
     //To Display Unplayed Matches
 
     public void updateMatchById(Match oldMatch);

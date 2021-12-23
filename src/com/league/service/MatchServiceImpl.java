@@ -50,17 +50,18 @@ public class MatchServiceImpl implements MatchService {
 
 
     @Override
-    public Match displayMatches() {
+    public List<Match> displayMatches() {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Match match = new Match();;
+        List<Match> matchesList = new ArrayList();
 
         try {
             String sql = "SELECT * FROM MATCH";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             System.out.println("ALL Matches\n=================");
+
             while (rs.next()) {
                 int matchID = rs.getInt(1);
                 String date = rs.getString(2);
@@ -71,18 +72,9 @@ public class MatchServiceImpl implements MatchService {
                 int firstTeamScore = rs.getInt(7);
                 int secondTeamScore = rs.getInt(8);
 
-                match.setMatchId(matchID);
-                match.setMatchDate(LocalDate.parse(date));
-                match.setReferee(referee);
-                match.setStadiumName(stadiumName);
-                match.setFirstTeamId(firstTeamId);
-                match.setSecondTeamId(secondTeamId);
-                match.setFirstTeamScore(firstTeamScore);
-                match.setSecondTeamScore(secondTeamScore);
+                matchesList.add(new Match(matchID, LocalDate.parse(date), referee, stadiumName, firstTeamId, secondTeamId, firstTeamScore, secondTeamScore));
+
             }
-            return match;
-
-
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
@@ -94,14 +86,17 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
-        return null;
+        return matchesList;
     }
 
+
+
     @Override
-    public void displayHeldMatches() {
+    public List<Match> displayHeldMatches() {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
+        List<Match> matchesList = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE AND SECOND_TEAM_SCORE NOT NULL ";
@@ -118,14 +113,8 @@ public class MatchServiceImpl implements MatchService {
                 int firstTeamScore = rs.getInt(7);
                 int secondTeamScore = rs.getInt(8);
 
-                System.out.print("Match ID: " + matchId);
-                System.out.print(" | Date: " + date);
-                System.out.print(" | Referee: " + referee);
-                System.out.print(" | Stadium Name: " + stadiumName);
-                System.out.print(" | First Team Id: " + firstTeamId);
-                System.out.print(" | Second Team Id: " + secondTeamId);
-                System.out.print(" | firstTeamScore: " + firstTeamScore);
-                System.out.print(" | secondTeamScore: " + secondTeamScore + "\n");
+                matchesList.add(new Match(matchId, LocalDate.parse(date), referee, stadiumName, firstTeamId, secondTeamId, firstTeamScore, secondTeamScore));
+
 
             }
         } catch (SQLException e) {
@@ -139,14 +128,15 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
+        return matchesList;
     }
 
     @Override
-    public void displayToBeHeldMatches() {
+    public List<Match> displayToBeHeldMatches() {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-
+        List<Match> matchesList = new ArrayList<>();
         try {
             String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE IS NULL AND SECOND_TEAM_SCORE IS NULL ";
             ps = con.prepareStatement(sql);
@@ -162,15 +152,7 @@ public class MatchServiceImpl implements MatchService {
                 int firstTeamScore = rs.getInt(7);
                 int secondTeamScore = rs.getInt(8);
 
-                System.out.print("Match ID: " + matchId);
-                System.out.print(" | Date: " + date);
-                System.out.print(" | Referee: " + referee);
-                System.out.print(" | Stadium Name: " + stadiumName);
-                System.out.print(" | First Team Id: " + firstTeamId);
-                System.out.print(" | Second Team Id: " + secondTeamId);
-                System.out.print(" | firstTeamScore: " + firstTeamScore);
-                System.out.print(" | secondTeamScore: " + secondTeamScore + "\n");
-
+                matchesList.add(new Match(matchId, LocalDate.parse(date), referee, stadiumName, firstTeamId, secondTeamId, firstTeamScore, secondTeamScore));
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -183,6 +165,7 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
+        return matchesList;
     }
 
     @Override
