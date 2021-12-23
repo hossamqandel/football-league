@@ -5,6 +5,9 @@ import com.league.entity.Match;
 import com.league.interfaces.MatchService;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -44,11 +47,14 @@ public class MatchServiceImpl implements MatchService {
         return null;
     }
 
+
+
     @Override
-    public void displayMatches() {
+    public Match displayMatches() {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
+        Match match = new Match();;
 
         try {
             String sql = "SELECT * FROM MATCH";
@@ -65,16 +71,18 @@ public class MatchServiceImpl implements MatchService {
                 int firstTeamScore = rs.getInt(7);
                 int secondTeamScore = rs.getInt(8);
 
-                System.out.print("Match ID: " + matchID);
-                System.out.print(" | Date: " + date);
-                System.out.print(" | Referee: " + referee);
-                System.out.print(" | Stadium Name: " + stadiumName);
-                System.out.print(" | First Team Id: " + firstTeamId);
-                System.out.print(" | Second Team Id: " + secondTeamId);
-                System.out.print(" | firstTeamScore: " + firstTeamScore);
-                System.out.print(" | secondTeamScore: " + secondTeamScore + "\n");
-
+                match.setMatchId(matchID);
+                match.setMatchDate(LocalDate.parse(date));
+                match.setReferee(referee);
+                match.setStadiumName(stadiumName);
+                match.setFirstTeamId(firstTeamId);
+                match.setSecondTeamId(secondTeamId);
+                match.setFirstTeamScore(firstTeamScore);
+                match.setSecondTeamScore(secondTeamScore);
             }
+            return match;
+
+
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
@@ -86,6 +94,7 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
+        return null;
     }
 
     @Override

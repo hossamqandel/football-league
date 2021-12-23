@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Match {
 
+    private int matchId;
     private LocalDate matchDate;
     private String referee;
     private String stadiumName;
@@ -18,18 +19,28 @@ public class Match {
     }
 
     //Constructor
-    public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeam, int secondTeam, Integer firstTeamScore, Integer secondTeamScore) {
+    public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
         this.matchDate = matchDate;
         this.referee = referee;
         this.stadiumName = stadiumName;
-        this.firstTeamId = firstTeam;
-        this.secondTeamId = secondTeam;
+        this.firstTeamId = firstTeamId;
+        this.secondTeamId = secondTeamId;
         this.firstTeamScore = firstTeamScore;
         this.secondTeamScore = secondTeamScore;
     }
 
 
     //Getters,Setters
+
+
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
+    }
+
     public LocalDate getMatchDate() {
         return matchDate;
     }

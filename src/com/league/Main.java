@@ -11,6 +11,7 @@ import com.league.entity.Team;
 import com.league.interfaces.MatchService;
 import com.league.interfaces.PlayerService;
 import com.league.interfaces.TeamService;
+import com.league.print.MatchPrinter;
 import com.league.service.MatchServiceImpl;
 import com.league.service.PlayerServiceImpl;
 import com.league.service.TeamServiceImpl;
@@ -44,7 +45,7 @@ public class Main {
 
         LocalDate date = LocalDate.of(2021, 10, 6);
 
-        matchService.displayHeldMatches();
+        MatchPrinter.printMatches(matchService.displayMatches());
 
 
     }

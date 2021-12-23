@@ -1,13 +1,16 @@
 package com.league.interfaces;
 
 import com.league.entity.Match;
+import com.league.entity.Team;
+
+import java.util.List;
 
 public interface MatchService {
 
     public Match addMatch(Match newMatch);
     //To Save a Match in DB
 
-    public void displayMatches();
+    public Match displayMatches();
     //To Display All Matches Without filter
 
     public void displayHeldMatches();
