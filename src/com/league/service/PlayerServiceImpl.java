@@ -41,12 +41,13 @@ public class PlayerServiceImpl implements PlayerService {
 
 
     @Override
-    public void displayPlayerInfo(String playerName) {
+    public Player displayPlayerInfo(String playerName) {
         System.out.println();
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
         System.out.println("=====================");
+        Player player = new Player();
         try {
             final String sql = "SELECT * FROM PLAYER WHERE NAME = ?";
             ps = con.prepareStatement(sql);
@@ -66,16 +67,17 @@ public class PlayerServiceImpl implements PlayerService {
                 final boolean isCaptain = rs.getBoolean(9);
                 final double rank = rs.getDouble(10);
 
-                System.out.println("Player ID: " + id);
-                System.out.println("Player Name: " + name);
-                System.out.println("Player Age: " + age);
-                System.out.println("Player T-Shirt Number: " + number);
-                System.out.println("Payer Position: " + position);
-                System.out.println("Player TeamID: " + teamId);
-                System.out.println("Player Role With Descrition: " + roleWithDescrition);
-                System.out.println("Player Total Goals: " + totalGoals);
-                System.out.println("is Captain: " + isCaptain);
-                System.out.println("Player Rank: " + rank);
+                player.setPlayerID(id);
+                player.setName(name);
+                player.setAge(age);
+                player.setNumber(number);
+                player.setPosition(position);
+                player.setTeamId(teamId);
+                player.setRoleWithDescription(roleWithDescrition);
+                player.setTotalGoals(totalGoals);
+                player.setCaptain(isCaptain);
+                player.setRank(rank);
+
             }
             System.out.println("=====================");
         } catch (SQLException e) {
@@ -92,6 +94,7 @@ public class PlayerServiceImpl implements PlayerService {
                 System.out.println(e.toString());
             }
         }
+        return player;
     }
 
 

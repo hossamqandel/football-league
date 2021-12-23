@@ -2,6 +2,7 @@ package com.league.entity;
 
 public class Player {
 
+    private int playerID;
     private String name;
     private int age;
     private int number;
@@ -20,7 +21,6 @@ public class Player {
 
     //Constructor
 
-
     public Player(String name, int age, int number, int teamId, String position, String roleWithDescription, int totalGoals, boolean isCaptain, double rank) {
         this.name = name;
         this.age = age;
@@ -33,7 +33,28 @@ public class Player {
         this.rank = rank;
     }
 
+    public Player(int playerID, String name, int age, int number, int teamId, String position, String roleWithDescription, int totalGoals, boolean isCaptain, double rank) {
+        this.playerID = playerID;
+        this.name = name;
+        this.age = age;
+        this.number = number;
+        this.teamId = teamId;
+        this.position = position;
+        this.roleWithDescription = roleWithDescription;
+        this.totalGoals = totalGoals;
+        this.isCaptain = isCaptain;
+        this.rank = rank;
+    }
+
     //Getters,Setters
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
+    }
+
     public String getName() {
         return name;
     }

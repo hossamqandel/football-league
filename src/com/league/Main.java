@@ -12,6 +12,7 @@ import com.league.interfaces.MatchService;
 import com.league.interfaces.PlayerService;
 import com.league.interfaces.TeamService;
 import com.league.print.MatchPrinter;
+import com.league.print.PlayerPrinter;
 import com.league.print.TeamPrinter;
 import com.league.service.MatchServiceImpl;
 import com.league.service.PlayerServiceImpl;
@@ -50,13 +51,13 @@ public class Main {
 
         List<Match> matchesList = matchService.displayMatches();
         List<Player> playersList = teamService.displayTeamPlayers(1);
+        PlayerPrinter.printPlayerInfo(playerService.displayPlayerInfo("Sadio Mane"));
 
-
-        for (Player player: playersList) {
-
-            TeamPrinter.teamPlayersPrint(player);
-            System.out.println();
-        }
+//        for (Player player: playersList) {
+//
+//            TeamPrinter.teamPlayersPrint(player);
+//            System.out.println();
+//        }
 
     }
 

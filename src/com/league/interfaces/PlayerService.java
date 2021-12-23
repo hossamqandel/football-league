@@ -8,7 +8,7 @@ public interface PlayerService {
     public void addPlayer(Player newPlayer);
     //To Add a New Player in DB
 
-    public void displayPlayerInfo(String playerName);
+    public Player displayPlayerInfo(String playerName);
     //To Display The Data of A Specific Player
 
 

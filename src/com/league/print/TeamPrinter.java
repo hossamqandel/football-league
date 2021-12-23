@@ -10,6 +10,8 @@ import static com.league.service.TeamServiceImpl.teamName;
 
 public class TeamPrinter {
 
+    //By Using this function, We achieve the Principle of Single Responsibility
+    // + We print the desired values according to needs
     public static void teamPlayersPrint(Player player){
 
         System.out.print("Team Name: " + teamName);
