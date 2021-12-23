@@ -20,7 +20,7 @@ public class Player {
     }
 
     //Constructor
-
+    //This One is to create a new player data.. so no need to enter The player id because player id Dynamiclly created by DB as PRIMARY KEY
     public Player(String name, int age, int number, int teamId, String position, String roleWithDescription, int totalGoals, boolean isCaptain, double rank) {
         this.name = name;
         this.age = age;
@@ -33,6 +33,7 @@ public class Player {
         this.rank = rank;
     }
 
+    //This One is to use when you need to get DATA from Some DB And DB Player TABLE Have An INTEGER ID Column (simple to DEA With Setting values Then Get It)
     public Player(int playerID, String name, int age, int number, int teamId, String position, String roleWithDescription, int totalGoals, boolean isCaptain, double rank) {
         this.playerID = playerID;
         this.name = name;

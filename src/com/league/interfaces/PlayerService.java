@@ -12,10 +12,10 @@ public interface PlayerService {
     //To Display The Data of A Specific Player
 
 
-    public void displayPlayerPosition(String playerName);
+    public Player displayPlayerPosition(String playerName);
     //Display Player Position
 
-    public void displayPlayerRoleWithDescription(String playerName);
+    public Player displayPlayerRoleWithDescription(String playerName);
     //Display Player RoleWithDescription
 
 

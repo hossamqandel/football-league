@@ -17,5 +17,14 @@ public class PlayerPrinter {
                 System.out.println("Player Rank: " + player.getRank());
     }
 
+    public static void printPlayerPosition(Player player){
+        System.out.println("Player Name: " + player.getName());
+        System.out.println("Player Position: " + player.getPosition());
+    }
+
+    public static void printPlayerRoleWithDescription(Player player){
+        System.out.println("Player Name: " + player.getName());
+        System.out.println("Player Role With Descrip: " + player.getRoleWithDescription());
+    }
 
 }

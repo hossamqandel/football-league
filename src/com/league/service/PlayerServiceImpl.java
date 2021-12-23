@@ -8,6 +8,7 @@ import java.sql.*;
 
 public class PlayerServiceImpl implements PlayerService {
 
+    Player player = new Player();
     @Override
     public void addPlayer(Player newPlayer) {
         Connection con = DBConnect.connectDatabase();
@@ -47,7 +48,6 @@ public class PlayerServiceImpl implements PlayerService {
         PreparedStatement ps = null;
         ResultSet rs = null;
         System.out.println("=====================");
-        Player player = new Player();
         try {
             final String sql = "SELECT * FROM PLAYER WHERE NAME = ?";
             ps = con.prepareStatement(sql);
@@ -99,12 +99,11 @@ public class PlayerServiceImpl implements PlayerService {
 
 
     @Override
-    public void displayPlayerPosition(String playerName) {
+    public Player displayPlayerPosition(String playerName) {
         System.out.println();
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-
         try {
             final String sql = "SELECT POSITION FROM PLAYER WHERE NAME = ?";
             ps = con.prepareStatement(sql);
@@ -113,7 +112,9 @@ public class PlayerServiceImpl implements PlayerService {
 
             // we are reading one row, so no need to loop
             String position = rs.getString(1);
-            System.out.println("Player Name: " + playerName + " | Position: " + position);// it should give us ROLE
+            player.setName(playerName);
+            player.setPosition(position);
+
 
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -129,16 +130,16 @@ public class PlayerServiceImpl implements PlayerService {
                 System.out.println(e.toString());
             }
         }
+        return player;
     }
 
 
     @Override
-    public void displayPlayerRoleWithDescription(String playerName) {
+    public Player displayPlayerRoleWithDescription(String playerName) {
         // lets read specific row on the database
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-
         try {
             final String sql = "SELECT ROLE_WITH_DESCRIPTION FROM PLAYER WHERE NAME = ?";
             ps = con.prepareStatement(sql);
@@ -147,7 +148,8 @@ public class PlayerServiceImpl implements PlayerService {
 
             // we are reading one row, so no need to loop
             String role = rs.getString(1);
-            System.out.println("\nPlayer Role With Description: " + role);// it should give us ROLE
+            player.setName(playerName);
+            player.setRoleWithDescription(role);
 
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -163,6 +165,7 @@ public class PlayerServiceImpl implements PlayerService {
                 System.out.println(e.toString());
             }
         }
+        return player;
     }
 
 

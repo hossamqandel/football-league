@@ -12,6 +12,7 @@ import java.util.Random;
 
 
 public class MatchServiceImpl implements MatchService {
+    List<Match> matchesList = new ArrayList();
 
     @Override
     public Match addMatch(Match newMatch) {
@@ -54,7 +55,6 @@ public class MatchServiceImpl implements MatchService {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Match> matchesList = new ArrayList();
 
         try {
             String sql = "SELECT * FROM MATCH";
@@ -95,7 +95,6 @@ public class MatchServiceImpl implements MatchService {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Match> matchesList = new ArrayList<>();
 
         try {
             String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE AND SECOND_TEAM_SCORE NOT NULL ";
@@ -136,7 +135,6 @@ public class MatchServiceImpl implements MatchService {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Match> matchesList = new ArrayList<>();
         try {
             String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE IS NULL AND SECOND_TEAM_SCORE IS NULL ";
             ps = con.prepareStatement(sql);
@@ -197,7 +195,7 @@ public class MatchServiceImpl implements MatchService {
         updateResultsTable(match.getSecondTeamId(), secondTeamPoints, secondTeamGoals, firstTeamGoals);
     }
 
-
+    //Still Working on It
     private void updateResultsTable(int teamId, int matchPoints, int scoredGoals, int concededGoals) {
         // 1- Write select statement to get current result for a team
         int gfFromDB = 0;
