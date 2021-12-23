@@ -19,7 +19,7 @@ public class PlayerServiceImpl implements PlayerService {
             ps.setInt(2, newPlayer.getAge());
             ps.setInt(3, newPlayer.getNumber());
             ps.setString(4, newPlayer.getPosition());
-            ps.setInt(5, newPlayer.getTeam());
+            ps.setInt(5, newPlayer.getTeamId());
             ps.setString(6, newPlayer.getRoleWithDescription());
             ps.setInt(7, newPlayer.getTotalGoals());
             ps.setBoolean(8, newPlayer.isCaptain());
@@ -178,7 +178,7 @@ public class PlayerServiceImpl implements PlayerService {
             preparedStatement.setString(1, oldPlayer.getName());
             preparedStatement.setInt(2, oldPlayer.getAge());
             preparedStatement.setInt(3, oldPlayer.getNumber());
-            preparedStatement.setInt(4, oldPlayer.getTeam());
+            preparedStatement.setInt(4, oldPlayer.getTeamId());
             preparedStatement.setString(5, oldPlayer.getRoleWithDescription());
             preparedStatement.setInt(6, oldPlayer.getTotalGoals());
             preparedStatement.setBoolean(7, oldPlayer.isCaptain());

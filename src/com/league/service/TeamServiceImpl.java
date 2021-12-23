@@ -1,6 +1,7 @@
 package com.league.service;
 
 import com.league.db.DBConnect;
+import com.league.entity.Player;
 import com.league.entity.Team;
 import com.league.interfaces.TeamService;
 
@@ -8,8 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TeamServiceImpl implements TeamService {
+
+    public static String teamName;
+
 
 
     @Override
@@ -151,10 +157,11 @@ public class TeamServiceImpl implements TeamService {
 
 
     @Override
-    public void displayTeamPlayers(int teamID) {
+    public List<Player> displayTeamPlayers(int teamID) {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
+        List<Player> players = new ArrayList<>();
         try {
             final String sql = "SELECT TEAM.NAME, PLAYER.NAME, PLAYER.AGE, PLAYER.NUMBER, PLAYER.POSITION, PLAYER.TEAM_ID, PLAYER.ROLE_WITH_DESCRIPTION, PLAYER.TOTAL_GOALS, PLAYER.IS_CAPTAIN, PLAYER.RANK FROM TEAM INNER JOIN PLAYER ON TEAM.ID = PLAYER.TEAM_ID WHERE TEAM.ID =  ?";
             ps = con.prepareStatement(sql);
@@ -174,18 +181,14 @@ public class TeamServiceImpl implements TeamService {
                 final boolean playerIsCaptain = rs.getBoolean(9);
                 final double playerRank = rs.getDouble(10);
 
-                System.out.print("Team Name: " + teamName);
-                System.out.print(" | Player Name: " + playerName);
-                System.out.print(" | Player Age: " + playerAge);
-                System.out.print(" | Player Number: " + playerNumber);
-                System.out.print(" | Player Position: " + playerPosition);
-                System.out.print(" | Team_ID: " + playerTeamId);
-                System.out.print(" | Player Role With Description: " + playerRoleWithDescription);
-                System.out.print(" | Player Total Goals: " + playerTotalGoals);
-                System.out.print(" | Is Captain: " + playerIsCaptain);
-                System.out.print(" | Player Rank: " + playerRank + "\n");
-            }
+                this.teamName = teamName;
 
+                //In this case we will display only one team NAME for Many players of The same TEAM
+                //So instead of Create a List Of Many Objects.. i created a list of PLAYER TYPE
+                //and then we can call this.teamName inside TeamPrinter Class Inside [teamPlayersPrint Funcation]
+                players.add(new Player(playerName, playerAge, playerNumber, playerTeamId, playerPosition, playerRoleWithDescription, playerTotalGoals, playerIsCaptain, playerRank));
+
+            }
 
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -201,6 +204,7 @@ public class TeamServiceImpl implements TeamService {
             }
 
         }
+        return players;
     }
 
 

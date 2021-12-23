@@ -7,10 +7,10 @@ import java.util.List;
 
 public class MatchPrinter {
 
-    //By Using this function, we achieve the principle of Single responsibility
+
+    //By Using this function, We achieve the Principle of Single Responsibility
     // + we print the desired values from several different functions [All Matches, Held, To Be Held]
     public static void printMatches (Match match){
-
         System.out.println("Match Id: " + match.getMatchId());
         System.out.println("Match Date: " + match.getMatchDate());
         System.out.println("Match Referee: " + match.getReferee());

@@ -12,6 +12,7 @@ import com.league.interfaces.MatchService;
 import com.league.interfaces.PlayerService;
 import com.league.interfaces.TeamService;
 import com.league.print.MatchPrinter;
+import com.league.print.TeamPrinter;
 import com.league.service.MatchServiceImpl;
 import com.league.service.PlayerServiceImpl;
 import com.league.service.TeamServiceImpl;
@@ -22,6 +23,7 @@ import java.sql.*;
 // TOOLS Package
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -47,11 +49,12 @@ public class Main {
         LocalDate date = LocalDate.of(2021, 10, 6);
 
         List<Match> matchesList = matchService.displayMatches();
-        List<Match> matchesList2 = matchService.displayHeldMatches();
-        List<Match> matchesList3 = matchService.displayToBeHeldMatches();
+        List<Player> playersList = teamService.displayTeamPlayers(1);
 
-        for (Match match: matchesList3) {
-            MatchPrinter.printMatches(match);
+
+        for (Player player: playersList) {
+
+            TeamPrinter.teamPlayersPrint(player);
             System.out.println();
         }
 

@@ -5,7 +5,7 @@ public class Player {
     private String name;
     private int age;
     private int number;
-    private int team;
+    private int teamId;
     private String position;
     private String roleWithDescription;
     private int totalGoals;
@@ -19,11 +19,13 @@ public class Player {
     }
 
     //Constructor
-    public Player(String name, int age, int number, int team, String position, String roleWithDescription, int totalGoals, boolean isCaptain, double rank) {
+
+
+    public Player(String name, int age, int number, int teamId, String position, String roleWithDescription, int totalGoals, boolean isCaptain, double rank) {
         this.name = name;
         this.age = age;
         this.number = number;
-        this.team = team;
+        this.teamId = teamId;
         this.position = position;
         this.roleWithDescription = roleWithDescription;
         this.totalGoals = totalGoals;
@@ -56,12 +58,12 @@ public class Player {
         this.number = number;
     }
 
-    public int getTeam() {
-        return team;
+    public int getTeamId() {
+        return teamId;
     }
 
-    public void setTeam(int team) {
-        this.team = team;
+    public void setTeamId(int teamId) {
+        this.teamId = teamId;
     }
 
     public String getPosition() {

@@ -1,6 +1,10 @@
 package com.league.interfaces;
 
+import com.league.entity.Player;
 import com.league.entity.Team;
+
+import java.util.List;
+import java.util.Objects;
 
 public interface TeamService {
 
@@ -22,7 +26,7 @@ public interface TeamService {
     //Return Team By Name
 
 
-    public void displayTeamPlayers(int teamID);
+    public List<Player> displayTeamPlayers(int teamID);
     //Return Team Players
 
     public void deleteTeam(String teamName);

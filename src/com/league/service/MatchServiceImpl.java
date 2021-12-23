@@ -90,7 +90,6 @@ public class MatchServiceImpl implements MatchService {
     }
 
 
-
     @Override
     public List<Match> displayHeldMatches() {
         Connection con = DBConnect.connectDatabase();
@@ -131,6 +130,7 @@ public class MatchServiceImpl implements MatchService {
         return matchesList;
     }
 
+
     @Override
     public List<Match> displayToBeHeldMatches() {
         Connection con = DBConnect.connectDatabase();
@@ -168,9 +168,11 @@ public class MatchServiceImpl implements MatchService {
         return matchesList;
     }
 
+
     @Override
     public void updateMatchById(Match oldMatch) {
     }
+
 
     @Override
     public void play(Match match) {
