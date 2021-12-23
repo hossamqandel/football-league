@@ -218,6 +218,8 @@ public class PlayerServiceImpl implements PlayerService {
         return null;
     }
 
+
+    //Not Needed For Now
     public void deletePlayer(String playerName) {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;

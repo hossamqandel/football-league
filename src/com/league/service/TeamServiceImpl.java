@@ -19,11 +19,11 @@ public class TeamServiceImpl implements TeamService {
 
         try {
             connection = DBConnect.connectDatabase();
-            final String sql = "INSERT INTO TEAM (NAME, TOTAL_SCORE) VALUES (?,?)";
+            final String sql = "INSERT INTO TEAM (NAME) VALUES (?)";
             ps = connection.prepareStatement(sql);
 
             ps.setString(1, newTeam.getName());
-            ps.setInt(2, newTeam.getTotalScore());
+
             ps.executeUpdate();
             System.out.println("Team Data INSERTED");
 
@@ -51,7 +51,6 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public void updateTeam(Team oldTeam) {
-
     }
 
 
@@ -204,6 +203,8 @@ public class TeamServiceImpl implements TeamService {
         }
     }
 
+
+    //Not Needed For Now
     @Override
     public void deleteTeam(String teamName) {
         Connection con = DBConnect.connectDatabase();
