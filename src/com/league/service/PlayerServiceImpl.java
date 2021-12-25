@@ -173,28 +173,28 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
 
-    //NOT FINISHED YET
+    //NOT FINISHED YET - BY HOSSAM
     @Override
     public void updatePlayer(Player oldPlayer, int playerID) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+        Connection con = null;
+        PreparedStatement ps = null;
 
         try {
-            connection = DBConnect.connectDatabase();
-            preparedStatement = connection.prepareStatement("UPDATE PLAYER SET " +
+            con = DBConnect.connectDatabase();
+            ps = con.prepareStatement("UPDATE PLAYER SET " +
                     "NAME = ?, AGE = ?, NUMBER = ?, POSITION = ?, TEAM_ID = ?, ROLE_WITH_DESCRIPTION = ?, TOTAL_GOALS = ?, IS_CAPTAIN = ?, RANK = ? WHERE ID = ?");
-            connection.setAutoCommit(false);
+            con.setAutoCommit(false);
 
-            preparedStatement.setString(1, oldPlayer.getName());
-            preparedStatement.setInt(2, oldPlayer.getAge());
-            preparedStatement.setInt(3, oldPlayer.getNumber());
-            preparedStatement.setInt(4, oldPlayer.getTeamId());
-            preparedStatement.setString(5, oldPlayer.getRoleWithDescription());
-            preparedStatement.setInt(6, oldPlayer.getTotalGoals());
-            preparedStatement.setBoolean(7, oldPlayer.isCaptain());
-            preparedStatement.setDouble(8, oldPlayer.getRank());
-            preparedStatement.setInt(9, playerID);
-            preparedStatement.executeUpdate();
+            ps.setString(1, oldPlayer.getName());
+            ps.setInt(2, oldPlayer.getAge());
+            ps.setInt(3, oldPlayer.getNumber());
+            ps.setInt(4, oldPlayer.getTeamId());
+            ps.setString(5, oldPlayer.getRoleWithDescription());
+            ps.setInt(6, oldPlayer.getTotalGoals());
+            ps.setBoolean(7, oldPlayer.isCaptain());
+            ps.setDouble(8, oldPlayer.getRank());
+            ps.setInt(9, playerID);
+            ps.executeUpdate();
 
 
 //            System.out.println("UPDATE person SET " +
@@ -203,23 +203,21 @@ public class PlayerServiceImpl implements PlayerService {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (preparedStatement != null) {
+            if (ps != null) {
                 try {
-                    preparedStatement.close();
+                    ps.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (connection != null) {
+            if (con != null) {
                 try {
-                    connection.close();
+                    con.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
         }
-
-
     }
 
 
