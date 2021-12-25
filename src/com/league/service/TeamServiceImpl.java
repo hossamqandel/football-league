@@ -110,7 +110,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not finished yet (Bring and Display Players & Matches Details)
+    //Not finished yet (Bring and Display Players & Matches Details) BY - Hossam
     @Override
     public Team getTeamById(int teamId) {
         Team team = new Team();
@@ -137,7 +137,6 @@ public class TeamServiceImpl implements TeamService {
                 System.out.println("Team Players ID: " + playersId);
                 System.out.println("Team Matches ID: " + matchesId);
                 System.out.println("Team Total Score: " + totalScore);
-
             }
 
         } catch (SQLException e) {
@@ -158,7 +157,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not finished yet (Bring and Display Players & Matches Details)
+    //Not finished yet (Bring and Display Players & Matches Details) BY - Hossam
     @Override
     public Team getTeamByName(String teamName) {
         Team team = new Team();
