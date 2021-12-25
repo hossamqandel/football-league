@@ -14,10 +14,13 @@ import java.util.List;
 
 public class TeamServiceImpl implements TeamService {
 
+    //NEED TO TESTING WITH OTHER TEAM
+    //WE CREATE THIS AS A STATIC VARIABLE FOR 2 REASONS
+    //( HE WILL RETURN ONLY ONE VALUE + WE WILL CALL HIN IN ANOTHER METHOD IN ANOTHERCLASS
     public static String teamName;
 
 
-
+    //FINISHED
     @Override
     public void addTeam(Team newTeam) {
         Connection connection = null;
@@ -54,108 +57,7 @@ public class TeamServiceImpl implements TeamService {
         }
     }
 
-
-    @Override
-    public void updateTeam(Team oldTeam) {
-    }
-
-
-    //Not finished yet (Bring and Display Players and Matches Details)
-    @Override
-    public Team getTeamById(int teamId) {
-        Team team = new Team();
-        System.out.println();
-        Connection con = DBConnect.connectDatabase();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            final String sql = "SELECT * FROM TEAM WHERE ID = ?";
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, teamId);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                final int id = rs.getInt(1);
-                final String name = rs.getString(2);
-                final int playersId = rs.getInt(3);
-                final int matchesId = rs.getInt(4);
-                final int totalScore = rs.getInt(5);
-
-                System.out.println("Team ID: " + id);
-                System.out.println("Team Name: " + name);
-                System.out.println("Team Players ID: " + playersId);
-                System.out.println("Team Matches ID: " + matchesId);
-                System.out.println("Team Total Score: " + totalScore);
-
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-
-        } finally {
-            // close connections
-            try {
-                rs.close();
-                ps.close();
-                con.close();
-            } catch (SQLException e) {
-                // TODO: handle exception
-                System.out.println(e.toString());
-            }
-        }
-        return team;
-    }
-
-
-    //Not finished yet (Bring and Display Players and Matches Details)
-    @Override
-    public Team getTeamByName(String teamName) {
-        Team team = new Team();
-        System.out.println();
-        Connection con = DBConnect.connectDatabase();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        try {
-            final String sql = "SELECT * FROM TEAM WHERE NAME = ?";
-            ps = con.prepareStatement(sql);
-            ps.setString(1, teamName);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                final int id = rs.getInt(1);
-                final String name = rs.getString(2);
-                final int playersId = rs.getInt(3);
-                final int matchesId = rs.getInt(4);
-                final int totalScore = rs.getInt(5);
-
-                System.out.println("Team ID: " + id);
-                System.out.println("Team Name: " + name);
-                System.out.println("Team Players ID: " + playersId);
-                System.out.println("Team Matches ID: " + matchesId);
-                System.out.println("Team Total Score: " + totalScore);
-
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.toString());
-
-        } finally {
-            // close connections
-            try {
-                rs.close();
-                ps.close();
-                con.close();
-            } catch (SQLException e) {
-                // TODO: handle exception
-                System.out.println(e.toString());
-            }
-        }
-        return team;
-    }
-
-
+    //FINISHED
     @Override
     public List<Player> displayTeamPlayers(int teamID) {
         Connection con = DBConnect.connectDatabase();
@@ -208,7 +110,109 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not Needed For Now
+    //Not finished yet (Bring and Display Players & Matches Details)
+    @Override
+    public Team getTeamById(int teamId) {
+        Team team = new Team();
+        System.out.println();
+        Connection con = DBConnect.connectDatabase();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            final String sql = "SELECT * FROM TEAM WHERE ID = ?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, teamId);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                final int id = rs.getInt(1);
+                final String name = rs.getString(2);
+                final int playersId = rs.getInt(3);
+                final int matchesId = rs.getInt(4);
+                final int totalScore = rs.getInt(5);
+
+                System.out.println("Team ID: " + id);
+                System.out.println("Team Name: " + name);
+                System.out.println("Team Players ID: " + playersId);
+                System.out.println("Team Matches ID: " + matchesId);
+                System.out.println("Team Total Score: " + totalScore);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+
+        } finally {
+            // close connections
+            try {
+                rs.close();
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                // TODO: handle exception
+                System.out.println(e.toString());
+            }
+        }
+        return team;
+    }
+
+
+    //Not finished yet (Bring and Display Players & Matches Details)
+    @Override
+    public Team getTeamByName(String teamName) {
+        Team team = new Team();
+        System.out.println();
+        Connection con = DBConnect.connectDatabase();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            final String sql = "SELECT * FROM TEAM WHERE NAME = ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, teamName);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                final int id = rs.getInt(1);
+                final String name = rs.getString(2);
+                final int playersId = rs.getInt(3);
+                final int matchesId = rs.getInt(4);
+                final int totalScore = rs.getInt(5);
+
+                System.out.println("Team ID: " + id);
+                System.out.println("Team Name: " + name);
+                System.out.println("Team Players ID: " + playersId);
+                System.out.println("Team Matches ID: " + matchesId);
+                System.out.println("Team Total Score: " + totalScore);
+
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+
+        } finally {
+            // close connections
+            try {
+                rs.close();
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                // TODO: handle exception
+                System.out.println(e.toString());
+            }
+        }
+        return team;
+    }
+
+
+    //Not finished yet
+    @Override
+    public void updateTeam(Team oldTeam) {
+    }
+
+
+    //Not Needed
     @Override
     public void deleteTeam(String teamName) {
         Connection con = DBConnect.connectDatabase();

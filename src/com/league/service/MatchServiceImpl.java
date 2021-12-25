@@ -12,8 +12,11 @@ import java.util.Random;
 
 
 public class MatchServiceImpl implements MatchService {
+
+    //A GLOBAL OBJECT OF MATCH CLASS TO USE INSIDE MULTIPLE FUNCTIONS
     List<Match> matchesList = new ArrayList();
 
+    //FINISHED
     @Override
     public Match addMatch(Match newMatch) {
 
@@ -48,8 +51,7 @@ public class MatchServiceImpl implements MatchService {
         return null;
     }
 
-
-
+    //FINISHED
     @Override
     public List<Match> displayMatches() {
         Connection con = DBConnect.connectDatabase();
@@ -89,7 +91,7 @@ public class MatchServiceImpl implements MatchService {
         return matchesList;
     }
 
-
+    //FINISHED
     @Override
     public List<Match> displayHeldMatches() {
         Connection con = DBConnect.connectDatabase();
@@ -129,7 +131,7 @@ public class MatchServiceImpl implements MatchService {
         return matchesList;
     }
 
-
+    //FINISHED
     @Override
     public List<Match> displayToBeHeldMatches() {
         Connection con = DBConnect.connectDatabase();
@@ -166,12 +168,13 @@ public class MatchServiceImpl implements MatchService {
         return matchesList;
     }
 
-
+    //NOT FINISHED
     @Override
     public void updateMatchById(Match oldMatch) {
     }
 
 
+    //Need to Review Again
     @Override
     public void play(Match match) {
         Random random = new Random();
@@ -195,7 +198,7 @@ public class MatchServiceImpl implements MatchService {
         updateResultsTable(match.getSecondTeamId(), secondTeamPoints, secondTeamGoals, firstTeamGoals);
     }
 
-    //Still Working on It
+    //Still Working on It - By Hossam
     private void updateResultsTable(int teamId, int matchPoints, int scoredGoals, int concededGoals) {
         // 1- Write select statement to get current result for a team
         int gfFromDB = 0;

@@ -21,6 +21,7 @@ import com.league.service.TeamServiceImpl;
 // SQL Package
 import java.sql.*;
 
+
 // TOOLS Package
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -49,16 +50,28 @@ public class Main {
 
         LocalDate date = LocalDate.of(2021, 10, 6);
 
-        List<Match> matchesList = matchService.displayMatches();
-        List<Player> playersList = teamService.displayTeamPlayers(1);
-        PlayerPrinter.printPlayerInfo(playerService.displayPlayerInfo("Sadio Mane"));
+        //Test Matches
+//        List<Match> MatchesList = matchService.displayMatches();
+//        List<Match> heldmatchesList = matchService.displayHeldMatches();
+//        List<Match> toBeHeldMatchesList = matchService.displayToBeHeldMatches();
+
+
+        //Test Team Players
+//        List<Player> teamPlayers = teamService.displayTeamPlayers(1); //YOU MUST ENTER ANY TEAM ID AS A PARAMETER
+
+
+        //Test Player/s
+//        Player playerInfo = playerService.displayPlayerInfo("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
+//        Player playerPosition = playerService.displayPlayerPosition("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
+//        Player playerRoleWDiscr = playerService.displayPlayerRoleWithDescription("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
+
+
 
 //        for (Player player: playersList) {
-//
 //            TeamPrinter.teamPlayersPrint(player);
 //            System.out.println();
-//        }
+//    }
 
-    }
 
-}
+    } //END OF MAIN
+} //END OF CLASS

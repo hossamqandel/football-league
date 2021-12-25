@@ -8,7 +8,11 @@ import java.sql.*;
 
 public class PlayerServiceImpl implements PlayerService {
 
+    //A GLOBAL OBJECT OF PLAYER CLASS TO USE INSIDE MULTIPLE FUNCTIONS
     Player player = new Player();
+
+
+    //FINISHED
     @Override
     public void addPlayer(Player newPlayer) {
         Connection con = DBConnect.connectDatabase();
@@ -40,7 +44,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
     }
 
-
+    //FINISHED
     @Override
     public Player displayPlayerInfo(String playerName) {
         System.out.println();
@@ -97,7 +101,7 @@ public class PlayerServiceImpl implements PlayerService {
         return player;
     }
 
-
+    //FINISHED
     @Override
     public Player displayPlayerPosition(String playerName) {
         System.out.println();
@@ -133,7 +137,7 @@ public class PlayerServiceImpl implements PlayerService {
         return player;
     }
 
-
+    //FINISHED
     @Override
     public Player displayPlayerRoleWithDescription(String playerName) {
         // lets read specific row on the database
@@ -169,7 +173,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
 
-    // Update fun not working yet
+    //NOT FINISHED YET
     @Override
     public void updatePlayer(Player oldPlayer, int playerID) {
         Connection connection = null;
@@ -219,13 +223,15 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
 
+    //NOT FINISHED YET
     @Override
     public Player searchPlayer(int playerNumber, String playerName, int teamId) {
         return null;
     }
 
 
-    //Not Needed For Now
+
+    //Not Needed
     public void deletePlayer(String playerName) {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
