@@ -226,7 +226,7 @@ public class MatchServiceImpl implements MatchService {
         int secondTeamGoals = random.nextInt(6);
         int firstTeamPoints = 0;
         int secondTeamPoints = 0;
-
+ 
         if (firstTeamGoals > secondTeamGoals) { //First Team Won
             firstTeamPoints = 3;
 

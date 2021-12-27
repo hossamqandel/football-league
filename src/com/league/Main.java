@@ -48,7 +48,6 @@ public class Main {
         Player virgilVanDijk = new Player("Virgil van Dijk", 30, 4, 1, "DEF", "CB - Gladiator", 1, true, 8.4);
 
 
-
         Player fodin = new Player("Phil Foden", 21, 47, 2, "MID", "CM - YoungStar", 5, false, 7.2);
 
 
