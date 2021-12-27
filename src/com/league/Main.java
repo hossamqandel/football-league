@@ -43,12 +43,17 @@ public class Main {
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  " + "By George,Samy And Hossam");
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
 
-        Player mohamedSalah = new Player("Mohamed Salah", 29, 11, 1, "FWD", "RW - Egyption King", 15, false, 9.4);
-        Player sadioMane = new Player("Sadio Mane", 29, 10, 1, "FWD", "LW - Superstar", 7, false, 9.1);
-        Player virgilVanDijk = new Player("Virgil van Dijk", 30, 4, 1, "Def", "CB - Gladiator", 1, true, 8.4);
+        Player mohamedSalah = new Player("Mohamed Salah", 29, 11, 1, "FWD", "RW - Egyption King", 22, false, 9.4);
+        Player sadioMane = new Player("Sadio Mane", 29, 10, 1, "FWD", "LW - Superstar", 16, false, 9.1);
+        Player virgilVanDijk = new Player("Virgil van Dijk", 30, 4, 1, "DEF", "CB - Gladiator", 1, true, 8.4);
 
 
-        LocalDate date = LocalDate.of(2021, 10, 6);
+
+        Player fodin = new Player("Phil Foden", 21, 47, 2, "MID", "CM - YoungStar", 5, false, 7.2);
+
+
+
+        LocalDate date = LocalDate.of(2021, 8, 11);
 
         //Test Matches
 //        List<Match> MatchesList = matchService.displayMatches();
@@ -57,7 +62,7 @@ public class Main {
 
 
         //Test Team Players
-//        List<Player> teamPlayers = teamService.displayTeamPlayers(1); //YOU MUST ENTER ANY TEAM ID AS A PARAMETER
+//        List<Player> teamPlayers = teamService.displayTeamPlayers(2); //YOU MUST ENTER ANY TEAM ID AS A PARAMETER
 
 
         //Test Player/s
@@ -66,12 +71,13 @@ public class Main {
 //        Player playerRoleWDiscr = playerService.displayPlayerRoleWithDescription("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
 
 
-
-//        for (Player player: playersList) {
+//        for (Player player: teamPlayers) {
 //            TeamPrinter.teamPlayersPrint(player);
 //            System.out.println();
 //    }
 
 
+        Match matchTest = new Match(date, "Micheal Oliver", "Anfield", 4, 1, 0, 3);
+        matchService.updateMatchById(matchTest, 1);
     } //END OF MAIN
 } //END OF CLASS

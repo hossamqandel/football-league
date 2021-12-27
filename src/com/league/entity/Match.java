@@ -19,6 +19,19 @@ public class Match {
     }
 
     //Constructor
+    public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
+        this.matchDate = matchDate;
+        this.referee = referee;
+        this.stadiumName = stadiumName;
+        this.firstTeamId = firstTeamId;
+        this.secondTeamId = secondTeamId;
+        this.firstTeamScore = firstTeamScore;
+        this.secondTeamScore = secondTeamScore;
+    }
+
+
+
+    //Constructor
     public Match(int matchId, LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
         this.matchId = matchId;
         this.matchDate = matchDate;
@@ -32,8 +45,6 @@ public class Match {
 
 
     //Getters,Setters
-
-
     public int getMatchId() {
         return matchId;
     }

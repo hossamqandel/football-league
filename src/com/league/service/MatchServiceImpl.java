@@ -16,6 +16,7 @@ public class MatchServiceImpl implements MatchService {
     //A GLOBAL OBJECT OF MATCH CLASS TO USE INSIDE MULTIPLE FUNCTIONS
     List<Match> matchesList = new ArrayList();
 
+
     //FINISHED
     @Override
     public Match addMatch(Match newMatch) {
@@ -48,6 +49,7 @@ public class MatchServiceImpl implements MatchService {
             }
 
         }
+
         return null;
     }
 
@@ -117,6 +119,7 @@ public class MatchServiceImpl implements MatchService {
 
 
             }
+
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
@@ -128,6 +131,7 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
+
         return matchesList;
     }
 
@@ -168,18 +172,58 @@ public class MatchServiceImpl implements MatchService {
         return matchesList;
     }
 
-    //NOT FINISHED
+    //FINISHED
     @Override
-    public void updateMatchById(Match oldMatch) {
+    public void updateMatchById(Match oldMatch, int matchID) {
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        try {
+            con = DBConnect.connectDatabase();
+            ps = con.prepareStatement("UPDATE MATCH SET DATE = ?, REFEREE = ?, STADIUM_NAME = ?, FIRST_TEAM_ID = ?, SECOND_TEAM_ID = ?,FIRST_TEAM_SCORE = ?, SECOND_TEAM_SCORE = ? WHERE ID = ?");
+
+            ps.setString(1, oldMatch.getMatchDate().toString());
+            ps.setString(2, oldMatch.getReferee());
+            ps.setString(3, oldMatch.getStadiumName());
+            ps.setInt(4, oldMatch.getFirstTeamId());
+            ps.setInt(5, oldMatch.getSecondTeamId());
+            ps.setInt(6, oldMatch.getFirstTeamScore());
+            ps.setInt(7, oldMatch.getSecondTeamScore());
+            ps.setInt(8, matchID);
+            ps.executeUpdate();
+
+            System.out.println("Match Data Updated");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
     }
+
 
 
     //Need to Check Again - By Hossam
     @Override
     public void play(Match match) {
         Random random = new Random();
-        int firstTeamGoals = random.nextInt(8);
-        int secondTeamGoals = random.nextInt(8);
+
+        int firstTeamGoals = random.nextInt(6);
+        int secondTeamGoals = random.nextInt(6);
         int firstTeamPoints = 0;
         int secondTeamPoints = 0;
 
@@ -189,7 +233,6 @@ public class MatchServiceImpl implements MatchService {
         } else if (firstTeamGoals == secondTeamGoals) { // The game is drawn
             firstTeamPoints = 1;
             secondTeamPoints = 1;
-
         } else { // Second Team Won
             secondTeamPoints = 3;
         }
@@ -215,9 +258,10 @@ public class MatchServiceImpl implements MatchService {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                teamId = rs.getInt(1);
-                gfFromDB = rs.getInt(2);
-                gaFromDB = rs.getInt(3);
+                String teamName = rs.getString(1);
+                teamId = rs.getInt(2);
+                gfFromDB = rs.getInt(3);
+                gaFromDB = rs.getInt(4);
                 totalPointsFromDB = rs.getInt(4);
             }
 
@@ -247,11 +291,11 @@ public class MatchServiceImpl implements MatchService {
         Connection myCon = DBConnect.connectDatabase();
         PreparedStatement myPS = null;
         try {
-            String sql = "UPDATE STANDINGS SET POINTS = ? , GA = ? , GF = ? WHERE TEAM_ID = ? ";
+            String sql = "UPDATE STANDINGS SET POINTS = ? , GF = ? , GA = ? WHERE TEAM_ID = ? ";
             myPS = myCon.prepareStatement(sql);
             myPS.setInt(1, newPoints);
-            myPS.setInt(2, newConcededGoals);
-            myPS.setInt(3, newGoals);
+            myPS.setInt(2, newGoals);
+            myPS.setInt(3, newConcededGoals);
             myPS.setInt(4, teamId);
             myPS.executeUpdate();
             System.out.println("Data has been updated");

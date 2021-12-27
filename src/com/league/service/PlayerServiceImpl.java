@@ -173,32 +173,28 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
 
-    //NOT FINISHED YET - BY HOSSAM
+    //FINISHED
     @Override
-    public void updatePlayer(Player oldPlayer, int playerID) {
+    public void updatePlayerByName(Player oldPlayer) {
         Connection con = null;
         PreparedStatement ps = null;
 
         try {
             con = DBConnect.connectDatabase();
-            ps = con.prepareStatement("UPDATE PLAYER SET " +
-                    "NAME = ?, AGE = ?, NUMBER = ?, POSITION = ?, TEAM_ID = ?, ROLE_WITH_DESCRIPTION = ?, TOTAL_GOALS = ?, IS_CAPTAIN = ?, RANK = ? WHERE ID = ?");
-            con.setAutoCommit(false);
+            ps = con.prepareStatement("UPDATE PLAYER SET AGE = ?, NUMBER = ?, POSITION = ?, TEAM_ID = ?, ROLE_WITH_DESCRIPTION = ?,TOTAL_GOALS = ?, IS_CAPTAIN = ?, RANK = ? WHERE NAME = ?");
 
-            ps.setString(1, oldPlayer.getName());
-            ps.setInt(2, oldPlayer.getAge());
-            ps.setInt(3, oldPlayer.getNumber());
+            ps.setInt(1, oldPlayer.getAge());
+            ps.setInt(2, oldPlayer.getNumber());
+            ps.setString(3, oldPlayer.getPosition());
             ps.setInt(4, oldPlayer.getTeamId());
             ps.setString(5, oldPlayer.getRoleWithDescription());
             ps.setInt(6, oldPlayer.getTotalGoals());
             ps.setBoolean(7, oldPlayer.isCaptain());
             ps.setDouble(8, oldPlayer.getRank());
-            ps.setInt(9, playerID);
+            ps.setString(9, oldPlayer.getName());
             ps.executeUpdate();
 
-
-//            System.out.println("UPDATE person SET " +
-//                    "first_name = ?, last_name = ? WHERE id = ?");
+            System.out.println("Player Data Updated");
 
         } catch (Exception e) {
             e.printStackTrace();

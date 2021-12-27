@@ -19,7 +19,7 @@ public interface PlayerService {
     //Display Player RoleWithDescription
 
 
-    public void updatePlayer(Player oldPlayer, int playerID);
+    public void updatePlayerByName(Player oldPlayer);
     //Load Player By Name From DB
     //Then Update Player By oldPlayer Then Save Changes
 

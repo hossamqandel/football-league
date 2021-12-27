@@ -14,15 +14,15 @@ public class TeamPrinter {
     // + We print the desired values according to needs
     public static void teamPlayersPrint(Player player){
 
-        System.out.print("Team Name: " + teamName);
-        System.out.print(" | Player Name: " + player.getName());
-        System.out.print(" | Player Age: " + player.getAge());
-        System.out.print(" | Player Number: " + player.getNumber());
-        System.out.print(" | Player Position: " + player.getPosition());
+        System.out.println("=================== " + teamName + " ===================");
+        System.out.print(" Player Name: " + player.getName());
+        System.out.print(" | Age: " + player.getAge());
+        System.out.print(" | Number: " + player.getNumber());
+        System.out.print(" | Position: " + player.getPosition());
         System.out.print(" | Team_ID: " + player.getTeamId());
-        System.out.print(" | Player Role With Description: " + player.getRoleWithDescription());
-        System.out.print(" | Player Total Goals: " + player.getTotalGoals());
+        System.out.print(" | Role With Description: " + player.getRoleWithDescription());
+        System.out.print(" | Total Goals: " + player.getTotalGoals());
         System.out.print(" | Is Captain: " + player.isCaptain());
-        System.out.print(" | Player Rank: " + player.getRank());
+        System.out.print(" | Rank: " + player.getRank());
     }
 }

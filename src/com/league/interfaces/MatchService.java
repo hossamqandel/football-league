@@ -20,7 +20,7 @@ public interface MatchService {
     public List<Match> displayToBeHeldMatches();
     //To Display Unplayed Matches
 
-    public void updateMatchById(Match oldMatch);
+    public void updateMatchById(Match oldMatch, int matchID);
     //Load Match By ID From DB
     //Update Match By oldMatch Then Save Changes
 

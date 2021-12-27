@@ -110,33 +110,35 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not finished yet (Bring and Display Players & Matches Details) BY - Hossam
+    //FINISHED - Spaghetti Code - Two Try Catch
     @Override
-    public Team getTeamById(int teamId) {
-        Team team = new Team();
-        System.out.println();
+    public void getTeamById(int teamId) {
         Connection con = DBConnect.connectDatabase();
+        System.out.println();
         PreparedStatement ps = null;
         ResultSet rs = null;
 
         try {
-            final String sql = "SELECT * FROM TEAM WHERE ID = ?";
+            final String sql = "SELECT TEAM.NAME, PLAYER.NAME, PLAYER.NUMBER, PLAYER.POSITION \n" +
+                    "FROM TEAM\n" +
+                    "INNER JOIN PLAYER ON TEAM.ID = PLAYER.TEAM_ID\n" +
+                    "WHERE TEAM.ID = ?";
             ps = con.prepareStatement(sql);
             ps.setInt(1, teamId);
             rs = ps.executeQuery();
 
+            System.out.println("==================== TEAM PLAYERS ====================");
             while (rs.next()) {
-                final int id = rs.getInt(1);
-                final String name = rs.getString(2);
-                final int playersId = rs.getInt(3);
-                final int matchesId = rs.getInt(4);
-                final int totalScore = rs.getInt(5);
+                final String teamName = rs.getString(1);
+                final String playersName = rs.getString(2);
+                final int playerNumber = rs.getInt(3);
+                final String playerPosition = rs.getString(4);
 
-                System.out.println("Team ID: " + id);
-                System.out.println("Team Name: " + name);
-                System.out.println("Team Players ID: " + playersId);
-                System.out.println("Team Matches ID: " + matchesId);
-                System.out.println("Team Total Score: " + totalScore);
+                System.out.println("Team: " + teamName);
+                System.out.println("Player Name: " + playersName);
+                System.out.println("Player Number: " + playerNumber);
+                System.out.println("Player Position: " + playerPosition);
+                System.out.println();
             }
 
         } catch (SQLException e) {
@@ -153,11 +155,59 @@ public class TeamServiceImpl implements TeamService {
                 System.out.println(e.toString());
             }
         }
-        return team;
+
+        /**************************************************/
+        con = DBConnect.connectDatabase();
+        ps = null;
+        rs = null;
+        try {
+            final String sql = "SELECT MATCH.DATE, MATCH.REFEREE, MATCH.STADIUM_NAME, MATCH.FIRST_TEAM_ID, MATCH.SECOND_TEAM_ID, MATCH.FIRST_TEAM_SCORE, MATCH.SECOND_TEAM_SCORE\n" +
+                    "FROM MATCH\n" +
+                    "INNER JOIN TEAM ON TEAM.ID = MATCH.FIRST_TEAM_ID OR TEAM.ID = MATCH.SECOND_TEAM_ID\n" +
+                    "WHERE TEAM.ID = ?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, teamId);
+            rs = ps.executeQuery();
+
+            System.out.println("==================== TEAM MATCHES ====================");
+            while (rs.next()) {
+                final String date = rs.getString(1);
+                final String referee = rs.getString(2);
+                final String stadiumName  = rs.getString(3);
+                final int firstTeamID = rs.getInt(4);
+                final int secondTeamID = rs.getInt(5);
+                final int firstTeamScore = rs.getInt(6);
+                final int secondTeamScore = rs.getInt(7);
+
+                System.out.println("Match Date: " + date);
+                System.out.println("Match Referee: " + referee);
+                System.out.println("Match Stadium: " + stadiumName);
+                System.out.println("First Team ID: " + firstTeamID);
+                System.out.println("Second Team ID: " + secondTeamID);
+                System.out.println("First Team Score: " + firstTeamScore);
+                System.out.println("Second Team Score: " + secondTeamScore);
+                System.out.println();
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+
+        } finally {
+            // close connections
+            try {
+                rs.close();
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                // TODO: handle exception
+                System.out.println(e.toString());
+            }
+        }
+
     }
 
 
-    //Not finished yet (Bring and Display Players & Matches Details) BY - Hossam
+    //Not finished
     @Override
     public Team getTeamByName(String teamName) {
         Team team = new Team();
@@ -209,7 +259,6 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public void updateTeam(Team oldTeam) {
     }
-
 
     //Not Needed
     @Override

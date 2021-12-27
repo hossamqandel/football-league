@@ -4,7 +4,6 @@ import com.league.entity.Player;
 import com.league.entity.Team;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface TeamService {
 
@@ -18,7 +17,7 @@ public interface TeamService {
     //Then Update Team By oldTeam Then Save Changes
 
 
-    public Team getTeamById(int teamId);
+    public void getTeamById(int teamId);
     //Return Team By ID
 
 
