@@ -76,7 +76,7 @@ public class Main {
 //    }
 
 
-        Match matchTest = new Match(date, "Micheal Oliver", "Anfield", 4, 1, 0, 3);
-        matchService.updateMatchById(matchTest, 1);
+        Match matchTest = new Match(1, 3, 2, 2);
+        
     } //END OF MAIN
 } //END OF CLASS

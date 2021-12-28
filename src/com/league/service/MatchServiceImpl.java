@@ -222,11 +222,12 @@ public class MatchServiceImpl implements MatchService {
     public void play(Match match) {
         Random random = new Random();
 
-        int firstTeamGoals = random.nextInt(6);
-        int secondTeamGoals = random.nextInt(6);
+        int firstTeamGoals = match.getFirstTeamScore();
+        int secondTeamGoals = match.getSecondTeamScore();
+
         int firstTeamPoints = 0;
         int secondTeamPoints = 0;
- 
+
         if (firstTeamGoals > secondTeamGoals) { //First Team Won
             firstTeamPoints = 3;
 
@@ -251,18 +252,19 @@ public class MatchServiceImpl implements MatchService {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
+
         try {
-            String sql = "SELECT * FROM STANDINGS WHERE TEAM_ID = ? ";
+            String sql = "SELECT TEAM_NAME, POINTS, GF, GA FROM STANDINGS WHERE TEAM_ID = ? ";
             ps = con.prepareStatement(sql);
             ps.setInt(1, teamId);
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 String teamName = rs.getString(1);
-                teamId = rs.getInt(2);
+                totalPointsFromDB = rs.getInt(2);
                 gfFromDB = rs.getInt(3);
                 gaFromDB = rs.getInt(4);
-                totalPointsFromDB = rs.getInt(4);
+
             }
 
         } catch (SQLException e) {
@@ -298,7 +300,8 @@ public class MatchServiceImpl implements MatchService {
             myPS.setInt(3, newConcededGoals);
             myPS.setInt(4, teamId);
             myPS.executeUpdate();
-            System.out.println("Data has been updated");
+            System.out.println("STANDINGS Data has been updated");
+
         } catch (SQLException e) {
             // TODO: handle exception
             System.out.println(e.toString());

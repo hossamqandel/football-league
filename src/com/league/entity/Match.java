@@ -29,7 +29,12 @@ public class Match {
         this.secondTeamScore = secondTeamScore;
     }
 
-
+    public Match(int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
+        this.firstTeamId = firstTeamId;
+        this.secondTeamId = secondTeamId;
+        this.firstTeamScore = firstTeamScore;
+        this.secondTeamScore = secondTeamScore;
+    }
 
     //Constructor
     public Match(int matchId, LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
