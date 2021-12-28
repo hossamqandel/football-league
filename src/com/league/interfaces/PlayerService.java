@@ -27,7 +27,4 @@ public interface PlayerService {
     public Player searchPlayer(int playerNumber, String playerName, int teamId);
     //Return Player Number,Name,TeamId
 
-
-    public void deletePlayer(String playerName);
-    //NOT Important Funcation
 }

@@ -13,10 +13,8 @@ public class DBConnect {
         Connection con = null;
 
         try {
-            System.out.println("Connecting...");
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection(jdbcURL);
-            System.out.println("DB Status: Connected to 'Egyption_League' ");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e + "");
         }

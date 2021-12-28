@@ -51,7 +51,7 @@ public class PlayerServiceImpl implements PlayerService {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        System.out.println("=====================");
+
         try {
             final String sql = "SELECT * FROM PLAYER WHERE NAME = ?";
             ps = con.prepareStatement(sql);
@@ -83,7 +83,7 @@ public class PlayerServiceImpl implements PlayerService {
                 player.setRank(rank);
 
             }
-            System.out.println("=====================");
+
         } catch (SQLException e) {
             System.out.println(e.toString());
 
@@ -217,38 +217,11 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
 
-    //NOT FINISHED YET
+    //NOT FINISHED
     @Override
     public Player searchPlayer(int playerNumber, String playerName, int teamId) {
         return null;
     }
 
-
-
-    //Not Needed
-    public void deletePlayer(String playerName) {
-        Connection con = DBConnect.connectDatabase();
-        PreparedStatement ps = null;
-        try {
-            String sql = "DELETE FROM PLAYER WHERE NAME = ? ";
-            ps = con.prepareStatement(sql);
-            ps.setString(1, playerName);
-            ps.execute();
-            System.out.println("Data has been deleted!");
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(e.toString());
-        } finally {
-            //always remember to close, am forgetting because this is teaching purposes
-            try {
-                ps.close();
-                con.close();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-
-    }
 
 } //Class END

@@ -19,6 +19,7 @@ public class MatchPrinter {
         System.out.println("Match Second Team ID: " + match.getSecondTeamId());
         System.out.println("Match First Team Score: " + match.getFirstTeamScore());
         System.out.println("Match Second Team Score: " + match.getSecondTeamScore());
+        System.out.println("=======================");
     }
 
 

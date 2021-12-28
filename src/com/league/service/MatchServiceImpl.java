@@ -31,12 +31,21 @@ public class MatchServiceImpl implements MatchService {
             ps.setString(3, newMatch.getStadiumName());
             ps.setInt(4, newMatch.getFirstTeamId());
             ps.setInt(5, newMatch.getSecondTeamId());
-            ps.setInt(6, newMatch.getFirstTeamScore());
-            ps.setInt(7, newMatch.getSecondTeamScore());
-            ps.execute();
 
+            if (newMatch.getFirstTeamScore() != null) {
+                ps.setInt(6, newMatch.getFirstTeamScore());
+            } else {
+                ps.setNull(6, Types.NULL);
+            } if (newMatch.getSecondTeamScore() != null) {
+                ps.setInt(7, newMatch.getFirstTeamScore());
+            } else {
+                ps.setNull(7, Types.NULL);
+            }
+
+            ps.execute();
             System.out.println("MATCH Data has been inserted!");
             return newMatch;
+
         } catch (SQLException e) {
             System.out.println(e.toString());
             // always remember to close database connections
@@ -90,6 +99,7 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
+
         return matchesList;
     }
 
@@ -307,4 +317,6 @@ public class MatchServiceImpl implements MatchService {
             System.out.println(e.toString());
         }
     }
-}
+
+
+} // Class End

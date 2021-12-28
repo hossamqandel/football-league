@@ -14,8 +14,8 @@ public class TeamPrinter {
     // + We print the desired values according to needs
     public static void teamPlayersPrint(Player player){
 
-        System.out.println("=================== " + teamName + " ===================");
-        System.out.print(" Player Name: " + player.getName());
+        System.out.print("\n=================== " + teamName + " ===================");
+        System.out.print("\nPlayer Name: " + player.getName());
         System.out.print(" | Age: " + player.getAge());
         System.out.print(" | Number: " + player.getNumber());
         System.out.print(" | Position: " + player.getPosition());

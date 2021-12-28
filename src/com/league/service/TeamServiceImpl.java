@@ -89,9 +89,7 @@ public class TeamServiceImpl implements TeamService {
                 //So instead of Create a List Of Many Objects.. i created a list of PLAYER TYPE
                 //and then we can call this.teamName inside TeamPrinter Class Inside [teamPlayersPrint Funcation]
                 players.add(new Player(playerName, playerAge, playerNumber, playerTeamId, playerPosition, playerRoleWithDescription, playerTotalGoals, playerIsCaptain, playerRank));
-
             }
-
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
@@ -171,13 +169,20 @@ public class TeamServiceImpl implements TeamService {
 
             System.out.println("==================== TEAM MATCHES ====================");
             while (rs.next()) {
-                final String date = rs.getString(1);
-                final String referee = rs.getString(2);
-                final String stadiumName  = rs.getString(3);
-                final int firstTeamID = rs.getInt(4);
-                final int secondTeamID = rs.getInt(5);
-                final int firstTeamScore = rs.getInt(6);
-                final int secondTeamScore = rs.getInt(7);
+                String date = rs.getString(1);
+                String referee = rs.getString(2);
+                String stadiumName  = rs.getString(3);
+                int firstTeamID = rs.getInt(4);
+                int secondTeamID = rs.getInt(5);
+
+                Integer firstTeamScore = rs.getInt(6);
+                if (rs.wasNull()){
+                    firstTeamScore = null;
+                }
+                Integer secondTeamScore = rs.getInt(7);
+                if (rs.wasNull()){
+                    secondTeamScore = null;
+                }
 
                 System.out.println("Match Date: " + date);
                 System.out.println("Match Referee: " + referee);
@@ -255,34 +260,9 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not Finished yet
+    //Not Needed
     @Override
     public void updateTeam(Team oldTeam) {
     }
 
-    //Not Needed
-    @Override
-    public void deleteTeam(String teamName) {
-        Connection con = DBConnect.connectDatabase();
-        PreparedStatement ps = null;
-        try {
-            String sql = "DELETE FROM TEAM WHERE NAME = ? ";
-            ps = con.prepareStatement(sql);
-            ps.setString(1, teamName);
-            ps.execute();
-            System.out.println("Data has been deleted!");
-        } catch (Exception e) {
-            // TODO: handle exception
-            System.out.println(e.toString());
-        } finally {
-            //always remember to close, am forgetting because this is teaching purposes
-            try {
-                ps.close();
-                con.close();
-            } catch (SQLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-    }
 }

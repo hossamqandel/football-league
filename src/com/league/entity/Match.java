@@ -18,6 +18,14 @@ public class Match {
     public Match() {
     }
 
+    public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId) {
+        this.matchDate = matchDate;
+        this.referee = referee;
+        this.stadiumName = stadiumName;
+        this.firstTeamId = firstTeamId;
+        this.secondTeamId = secondTeamId;
+    }
+
     //Constructor
     public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
         this.matchDate = matchDate;

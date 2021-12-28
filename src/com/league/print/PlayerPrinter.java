@@ -5,6 +5,7 @@ import com.league.entity.Player;
 public class PlayerPrinter {
 
     public static void printPlayerInfo(Player player){
+        System.out.println("============ PLAYER INFO =========");
                 System.out.println("Player ID: " + player.getPlayerID());
                 System.out.println("Player Name: " + player.getName());
                 System.out.println("Player Age: " + player.getAge());
@@ -15,6 +16,7 @@ public class PlayerPrinter {
                 System.out.println("Player Total Goals: " + player.getTotalGoals());
                 System.out.println("is Captain: " + player.isCaptain());
                 System.out.println("Player Rank: " + player.getRank());
+        System.out.println("=========================");
     }
 
     public static void printPlayerPosition(Player player){
@@ -26,5 +28,7 @@ public class PlayerPrinter {
         System.out.println("Player Name: " + player.getName());
         System.out.println("Player Role With Descrip: " + player.getRoleWithDescription());
     }
+
+
 
 }

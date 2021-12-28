@@ -28,6 +28,4 @@ public interface TeamService {
     public List<Player> displayTeamPlayers(int teamID);
     //Return Team Players
 
-    public void deleteTeam(String teamName);
-    //NOT Important Funcation
 }
