@@ -40,7 +40,7 @@ public class Main {
         System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
     }
 
-    
+
     static final MatchService matchService = new MatchServiceImpl();
     static final PlayerService playerService = new PlayerServiceImpl();
     static final TeamService teamService = new TeamServiceImpl();
