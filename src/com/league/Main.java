@@ -63,7 +63,7 @@ public class Main {
         Player gavi = new Player("Gavi", 18, 30, 3, "MID", "CM - Artist", 1, false, 5.7);
         Player piqu = new Player("Gerrard Piqu", 34, 3, 3, "DEF", "CB - Engine", 0, true, 7.4);
         Player pedri = new Player("Pedri", 19, 17, 3, "MID", "CM - Architect", 1, false, 4.1);
- 
+
 
         //Matches
         Match barcelona_RealMadrid = new Match(date, "Mike Dean", "Bernabue", 3, 2, 3, 1);
