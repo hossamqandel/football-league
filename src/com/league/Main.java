@@ -45,7 +45,7 @@ public class Main {
     static final PlayerService playerService = new PlayerServiceImpl();
     static final TeamService teamService = new TeamServiceImpl();
 
-
+ 
     public static void main(String[] args) throws ParseException, SQLException {
         LocalDate date = LocalDate.of(2021, 8, 21);
 
