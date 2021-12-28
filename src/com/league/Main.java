@@ -32,6 +32,14 @@ import java.util.List;
 
 
 public class Main {
+    private static void intro(){
+        System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   " + "Egyptian League");
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  " + "By George,Samy And Hossam");
+        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
+    }
+
     
     static final MatchService matchService = new MatchServiceImpl();
     static final PlayerService playerService = new PlayerServiceImpl();
@@ -90,39 +98,7 @@ public class Main {
 //        PlayerPrinter.printPlayerPosition();
 //        PlayerPrinter.printPlayerRoleWithDescription();
 
-        Main.sortStandingTable();
+
 
     } //END OF MAIN
-
-
-
-    private static void intro(){
-        System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
-        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t   " + "Egyptian League");
-        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
-        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  " + "By George,Samy And Hossam");
-        System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t=====================");
-    }
-
-    public static void sortStandingTable() throws SQLException {
-        Connection con = DBConnect.connectDatabase();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        String sql = "SELECT * FROM STANDINGS ORDER BY POINTS DESC";
-        rs = ps.executeQuery(sql);
-
-        System.out.println("Name    Points    GF    GA");
-        while (rs.next()) {
-            int id = rs.getInt(1);
-            String teamName = rs.getString(2);
-            int points = rs.getInt(3);
-            int ga = rs.getInt(4);
-            int gf = rs.getInt(5);
-            System.out.println(teamName + "  " + points + "   " + ga + "   " + gf);
-        }
-
-        // close the connection
-        con.close();
-    }
 } //END OF CLASS
