@@ -77,10 +77,10 @@ public class Main {
 //        matchService.play(barcelona_RealMadrid);
 
 
-        /***********************************************************/
+
 
         //Test Matches
-//        List<Match> MatchesList = matchService.displayMatches();
+//        List<Match> matchesList = matchService.displayMatches();
 //        List<Match> heldmatchesList = matchService.displayHeldMatches();
 //        List<Match> toBeHeldMatchesList = matchService.displayToBeHeldMatches();
 
@@ -90,14 +90,12 @@ public class Main {
 
 
         //Test Player/s
-//        Player playerInfo = playerService.displayPlayerInfo("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
-//        Player playerPosition = playerService.displayPlayerPosition("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
-//        Player playerRoleWDiscr = playerService.displayPlayerRoleWithDescription("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
+//        Player playerInfo = playerService.getPlayerData("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
+//        Player playerInfo2 = playerService.searchPlayer(11, "Mohamed Salah", 1); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
 
-//        PlayerPrinter.printPlayerInfo(playerInfo);
-//        PlayerPrinter.printPlayerPosition();
-//        PlayerPrinter.printPlayerRoleWithDescription();
-
+//        PlayerPrinter.printFullPlayerInfo(playerInfo);
+//        PlayerPrinter.printPlayerPosition(playerInfo);
+//        PlayerPrinter.printPlayerRoleWithDescription(playerInfo);
 
 
     } //END OF MAIN

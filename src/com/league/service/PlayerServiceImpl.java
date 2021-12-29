@@ -46,7 +46,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     //FINISHED
     @Override
-    public Player displayPlayerInfo(String playerName) {
+    public Player getPlayerData(String playerName) {
         System.out.println();
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
@@ -98,8 +98,11 @@ public class PlayerServiceImpl implements PlayerService {
                 System.out.println(e.toString());
             }
         }
+
         return player;
     }
+
+    /* NOT NEEDED METHODS AFTER REVIEW
 
     //FINISHED
     @Override
@@ -171,7 +174,7 @@ public class PlayerServiceImpl implements PlayerService {
         }
         return player;
     }
-
+    */
 
     //FINISHED
     @Override
@@ -220,7 +223,59 @@ public class PlayerServiceImpl implements PlayerService {
     //NOT FINISHED
     @Override
     public Player searchPlayer(int playerNumber, String playerName, int teamId) {
-        return null;
+        Connection con = DBConnect.connectDatabase();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            final String sql = "SELECT * FROM PLAYER WHERE NUMBER = ? AND NAME = ? AND TEAM_ID = ?";
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, playerNumber);
+            ps.setString(2, playerName);
+            ps.setInt(3, teamId);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                final int id = rs.getInt(1);
+                final String name = rs.getString(2);
+                final int age = rs.getInt(3);
+                final int number = rs.getInt(4);
+                final String position = rs.getString(5);
+                int team = rs.getInt(6);
+                final String roleWithDescrition = rs.getString(7);
+                final int totalGoals = rs.getInt(8);
+                final boolean isCaptain = rs.getBoolean(9);
+                final double rank = rs.getDouble(10);
+
+                player.setPlayerID(id);
+                player.setName(name);
+                player.setAge(age);
+                player.setNumber(number);
+                player.setPosition(position);
+                player.setTeamId(team);
+                player.setRoleWithDescription(roleWithDescrition);
+                player.setTotalGoals(totalGoals);
+                player.setCaptain(isCaptain);
+                player.setRank(rank);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+
+        } finally {
+            // close connections
+            try {
+                rs.close();
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                // TODO: handle exception
+                System.out.println(e.toString());
+            }
+        }
+
+        return player;
     }
 
 

@@ -8,15 +8,8 @@ public interface PlayerService {
     public void addPlayer(Player newPlayer);
     //To Add a New Player in DB
 
-    public Player displayPlayerInfo(String playerName);
+    public Player getPlayerData(String playerName);
     //To Display The Data of A Specific Player
-
-
-    public Player displayPlayerPosition(String playerName);
-    //Display Player Position
-
-    public Player displayPlayerRoleWithDescription(String playerName);
-    //Display Player RoleWithDescription
 
 
     public void updatePlayerByName(Player oldPlayer);
