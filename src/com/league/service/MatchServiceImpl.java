@@ -77,9 +77,9 @@ public class MatchServiceImpl implements MatchService {
                 int firstTeamScore = rs.getInt(7);
                 int secondTeamScore = rs.getInt(8);
 
-
                 matchesList.add(new Match(matchID, LocalDate.parse(date), referee, stadiumName, firstTeamId, secondTeamId, firstTeamScore, secondTeamScore));
             }
+
         } catch (SQLException e) {
             System.out.println(e.toString());
         } finally {
@@ -91,6 +91,7 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
+
         return matchesList;
 
     }
@@ -184,6 +185,7 @@ public class MatchServiceImpl implements MatchService {
             con = DBConnect.connectDatabase();
             ps = con.prepareStatement("UPDATE MATCH SET DATE = ?, REFEREE = ?, STADIUM_NAME = ?, FIRST_TEAM_ID = ?, SECOND_TEAM_ID = ?,FIRST_TEAM_SCORE = ?, SECOND_TEAM_SCORE = ? WHERE ID = ?");
 
+
             ps.setString(1, oldMatch.getMatchDate().toString());
             ps.setString(2, oldMatch.getReferee());
             ps.setString(3, oldMatch.getStadiumName());
@@ -220,7 +222,6 @@ public class MatchServiceImpl implements MatchService {
     //Need to Check Again - By Hossam
     @Override
     public void play(Match match) {
-        Random random = new Random();
 
         int firstTeamGoals = match.getFirstTeamScore();
         int secondTeamGoals = match.getSecondTeamScore();
@@ -307,7 +308,6 @@ public class MatchServiceImpl implements MatchService {
             System.out.println(e.toString());
         }
     }
-
 
 
 } // Class End

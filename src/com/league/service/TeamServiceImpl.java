@@ -14,11 +14,10 @@ import java.util.List;
 
 public class TeamServiceImpl implements TeamService {
 
-    //NEED TO TESTING WITH OTHER TEAM
-    //WE CREATE THIS AS A STATIC VARIABLE FOR 2 REASONS
-    //( HE WILL RETURN ONLY ONE VALUE + WE WILL CALL HIN IN ANOTHER METHOD IN ANOTHERCLASS
-    public static String teamName;
 
+    //WE CREATE THIS AS A STATIC VARIABLE FOR 2 REASONS
+    //HE WILL RETURN ONLY ONE VALUE + WE WILL CALL HIM IN ANOTHER CLASS
+    public static String teamName;
 
     //FINISHED
     @Override
