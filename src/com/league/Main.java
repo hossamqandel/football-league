@@ -67,12 +67,12 @@ public class Main {
 
         //Matches
         Match barcelona_RealMadrid = new Match(date, "Mike Dean", "Bernabue", 3, 2, 3, 1);
-        Match liverpool_Barcelona = new Match(date, "Hernandez", "Camp Nou", 1, 3, null, null);
-        Match realMadrid_Liverpool = new Match(date, "Micheal Oliver", "Anield", 2, 1, null, null);
-        Match realMadrid_Barcelona = new Match(date, "Andres", "Camp Nou", 2, 3, null, null);
+        Match liverpool_Barcelona = new Match(date, "Hernandez", "Camp Nou", 1, 3, -1, -1);
+        Match realMadrid_Liverpool = new Match(date, "Micheal Oliver", "Anield", 2, 1, -1, -1);
+        Match realMadrid_Barcelona = new Match(date, "Andres", "Camp Nou", 2, 3, -1, -1);
         //Not Added
-        Match barcelona_liverpool = new Match(date, "Adam", "Anield", 3, 1, null, null);
-        Match liverpool_RealMadrid = new Match(date, "Luis", "Bernabue", 3, 2, null, null);
+        Match barcelona_liverpool = new Match(date, "Adam", "Anield", 3, 1, -1, -1);
+        Match liverpool_RealMadrid = new Match(date, "Luis", "Bernabue", 3, 2, -1, -1);
 //        matchService.updateMatchById(barcelona_RealMadrid, 1);
 //        matchService.play(barcelona_RealMadrid);
 
@@ -80,9 +80,13 @@ public class Main {
 
 
         //Test Matches
-//        List<Match> matchesList = matchService.displayMatches();
+//        List<Match> matchesList = matchService.displayAllMatches();
 //        List<Match> heldmatchesList = matchService.displayHeldMatches();
-//        List<Match> toBeHeldMatchesList = matchService.displayToBeHeldMatches();
+        List<Match> toBeHeldMatchesList = matchService.displayToBeHeldMatches();
+
+        for (Match match: toBeHeldMatchesList) {
+            MatchPrinter.printMatches(match);
+        }
 
 
         //Test Team Players
@@ -96,6 +100,7 @@ public class Main {
 //        PlayerPrinter.printFullPlayerInfo(playerInfo);
 //        PlayerPrinter.printPlayerPosition(playerInfo);
 //        PlayerPrinter.printPlayerRoleWithDescription(playerInfo);
+
 
 
     } //END OF MAIN

@@ -10,7 +10,7 @@ public interface MatchService {
     public Match addMatch(Match newMatch);
     //To Save a Match in DB
 
-    public List<Match> displayMatches();
+    public List<Match> displayAllMatches();
     //To Display All Matches Without filter
 
     public List<Match>  displayHeldMatches();

@@ -31,16 +31,8 @@ public class MatchServiceImpl implements MatchService {
             ps.setString(3, newMatch.getStadiumName());
             ps.setInt(4, newMatch.getFirstTeamId());
             ps.setInt(5, newMatch.getSecondTeamId());
-
-            if (newMatch.getFirstTeamScore() != null) {
-                ps.setInt(6, newMatch.getFirstTeamScore());
-            } else {
-                ps.setNull(6, Types.NULL);
-            } if (newMatch.getSecondTeamScore() != null) {
-                ps.setInt(7, newMatch.getFirstTeamScore());
-            } else {
-                ps.setNull(7, Types.NULL);
-            }
+            ps.setInt(6, newMatch.getFirstTeamScore());
+            ps.setInt(7, newMatch.getFirstTeamScore());
 
             ps.execute();
             System.out.println("MATCH Data has been inserted!");
@@ -64,7 +56,7 @@ public class MatchServiceImpl implements MatchService {
 
     //FINISHED
     @Override
-    public List<Match> displayMatches() {
+    public List<Match> displayAllMatches() {
         Connection con = DBConnect.connectDatabase();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -74,6 +66,7 @@ public class MatchServiceImpl implements MatchService {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             System.out.println("ALL Matches\n=================");
+
 
             while (rs.next()) {
                 int matchID = rs.getInt(1);
@@ -85,8 +78,8 @@ public class MatchServiceImpl implements MatchService {
                 int firstTeamScore = rs.getInt(7);
                 int secondTeamScore = rs.getInt(8);
 
-                matchesList.add(new Match(matchID, LocalDate.parse(date), referee, stadiumName, firstTeamId, secondTeamId, firstTeamScore, secondTeamScore));
 
+                matchesList.add(new Match(matchID, LocalDate.parse(date), referee, stadiumName, firstTeamId, secondTeamId, firstTeamScore, secondTeamScore));
             }
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -99,8 +92,8 @@ public class MatchServiceImpl implements MatchService {
                 System.out.println(e.toString());
             }
         }
-
         return matchesList;
+
     }
 
     //FINISHED
@@ -111,7 +104,7 @@ public class MatchServiceImpl implements MatchService {
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE AND SECOND_TEAM_SCORE NOT NULL ";
+            String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE AND SECOND_TEAM_SCORE > -1 ";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             System.out.println("ALL Held Matches\n=================");
@@ -152,7 +145,7 @@ public class MatchServiceImpl implements MatchService {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE IS NULL AND SECOND_TEAM_SCORE IS NULL ";
+            String sql = "SELECT * FROM MATCH WHERE FIRST_TEAM_SCORE IS -1 AND SECOND_TEAM_SCORE IS -1 ";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             System.out.println("ALL To Be Held Matches\n=================");
@@ -224,8 +217,6 @@ public class MatchServiceImpl implements MatchService {
         }
 
     }
-
-
 
     //Need to Check Again - By Hossam
     @Override

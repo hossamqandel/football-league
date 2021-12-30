@@ -10,8 +10,8 @@ public class Match {
     private String stadiumName;
     private int firstTeamId;
     private int secondTeamId;
-    private Integer firstTeamScore;
-    private Integer secondTeamScore;
+    private int firstTeamScore;
+    private int secondTeamScore;
 
 
     //Empty Constructor
@@ -27,7 +27,7 @@ public class Match {
     }
 
     //Constructor
-    public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
+    public Match(LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, int firstTeamScore, int secondTeamScore) {
         this.matchDate = matchDate;
         this.referee = referee;
         this.stadiumName = stadiumName;
@@ -37,7 +37,7 @@ public class Match {
         this.secondTeamScore = secondTeamScore;
     }
 
-    public Match(int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
+    public Match(int firstTeamId, int secondTeamId, int firstTeamScore, int secondTeamScore) {
         this.firstTeamId = firstTeamId;
         this.secondTeamId = secondTeamId;
         this.firstTeamScore = firstTeamScore;
@@ -45,7 +45,7 @@ public class Match {
     }
 
     //Constructor
-    public Match(int matchId, LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, Integer firstTeamScore, Integer secondTeamScore) {
+    public Match(int matchId, LocalDate matchDate, String referee, String stadiumName, int firstTeamId, int secondTeamId, int firstTeamScore, int secondTeamScore) {
         this.matchId = matchId;
         this.matchDate = matchDate;
         this.referee = referee;
@@ -106,7 +106,7 @@ public class Match {
         this.secondTeamId = secondTeamId;
     }
 
-    public Integer getFirstTeamScore() {
+    public int getFirstTeamScore() {
         return firstTeamScore;
     }
 
@@ -114,7 +114,7 @@ public class Match {
         this.firstTeamScore = firstTeamScore;
     }
 
-    public Integer getSecondTeamScore() {
+    public int getSecondTeamScore() {
         return secondTeamScore;
     }
 
