@@ -9,12 +9,14 @@ import com.league.entity.Player;
 import com.league.entity.Team;
 import com.league.interfaces.MatchService;
 import com.league.interfaces.PlayerService;
+import com.league.interfaces.TableService;
 import com.league.interfaces.TeamService;
 import com.league.print.MatchPrinter;
 import com.league.print.PlayerPrinter;
 import com.league.print.TeamPrinter;
 import com.league.service.MatchServiceImpl;
 import com.league.service.PlayerServiceImpl;
+import com.league.service.TableServiceImpl;
 import com.league.service.TeamServiceImpl;
 
 
@@ -44,6 +46,7 @@ public class Main {
     static final MatchService matchService = new MatchServiceImpl();
     static final PlayerService playerService = new PlayerServiceImpl();
     static final TeamService teamService = new TeamServiceImpl();
+    static final TableService tableService = new TableServiceImpl();
 
 
     public static void main(String[] args) throws ParseException, SQLException {
@@ -67,14 +70,14 @@ public class Main {
 
         //Matches
         Match barcelona_RealMadrid = new Match(date, "Mike Dean", "Bernabue", 3, 2, 3, 1);
-        Match liverpool_Barcelona = new Match(date, "Hernandez", "Camp Nou", 1, 3, -1, -1);
+        Match liverpool_Barcelona = new Match(date, "Hernandez", "Camp Nou", 1, 3, 5, 1);
         Match realMadrid_Liverpool = new Match(date, "Micheal Oliver", "Anield", 2, 1, -1, -1);
         Match realMadrid_Barcelona = new Match(date, "Andres", "Camp Nou", 2, 3, -1, -1);
         //Not Added
         Match barcelona_liverpool = new Match(date, "Adam", "Anield", 3, 1, -1, -1);
         Match liverpool_RealMadrid = new Match(date, "Luis", "Bernabue", 3, 2, -1, -1);
-//        matchService.updateMatchById(barcelona_RealMadrid, 1);
-//        matchService.play(barcelona_RealMadrid);
+//        matchService.updateMatchById(liverpool_Barcelona, 2);
+//        matchService.play(liverpool_Barcelona);
 
 
 
@@ -82,17 +85,21 @@ public class Main {
         //Test Matches
 //        List<Match> matchesList = matchService.displayAllMatches();
 //        List<Match> heldmatchesList = matchService.displayHeldMatches();
-        List<Match> toBeHeldMatchesList = matchService.displayToBeHeldMatches();
-
-        for (Match match: toBeHeldMatchesList) {
-            MatchPrinter.printMatches(match);
-        }
+//        List<Match> toBeHeldMatchesList = matchService.displayToBeHeldMatches();
+//
+//        for (Match match: toBeHeldMatchesList) {
+//            MatchPrinter.printMatches(match);
+//        }
 
 
         //Test Team Players
 //        List<Player> teamPlayers = teamService.displayTeamPlayers(1); //YOU MUST ENTER ANY TEAM ID AS A PARAMETER
+        //teamService.displayTeamGoals("FC Barcelona");
 
 
+
+
+        
         //Test Player/s
 //        Player playerInfo = playerService.getPlayerData("Mohamed Salah"); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
 //        Player playerInfo2 = playerService.searchPlayer(11, "Mohamed Salah", 1); //YOU MUST ENTER ANY PLAYER NAME AS A PARAMETER
@@ -102,6 +109,7 @@ public class Main {
 //        PlayerPrinter.printPlayerRoleWithDescription(playerInfo);
 
 
+        //tableService.displayTeamsOrderdByGoals();
 
     } //END OF MAIN
 } //END OF CLASS

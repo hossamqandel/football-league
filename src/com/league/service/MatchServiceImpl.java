@@ -16,7 +16,6 @@ public class MatchServiceImpl implements MatchService {
     //A GLOBAL OBJECT OF MATCH CLASS TO USE INSIDE MULTIPLE FUNCTIONS
     List<Match> matchesList = new ArrayList();
 
-
     //FINISHED
     @Override
     public Match addMatch(Match newMatch) {
@@ -308,6 +307,7 @@ public class MatchServiceImpl implements MatchService {
             System.out.println(e.toString());
         }
     }
+
 
 
 } // Class End

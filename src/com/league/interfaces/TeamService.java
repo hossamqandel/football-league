@@ -20,6 +20,7 @@ public interface TeamService {
     public void getTeamById(int teamId);
     //Return Team By ID
 
+    public void displayTeamGoals(String teamName);
 
     public Team getTeamByName(String teamName);
     //Return Team By Name

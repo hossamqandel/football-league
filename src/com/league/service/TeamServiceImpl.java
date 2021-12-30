@@ -211,6 +211,44 @@ public class TeamServiceImpl implements TeamService {
 
     }
 
+    @Override
+    public void displayTeamGoals(String teamName){
+        Connection con = DBConnect.connectDatabase();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            final String sql = "SELECT GF, GA FROM STANDINGS WHERE TEAM_NAME =  ?";
+            ps = con.prepareStatement(sql);
+            ps.setString(1, teamName);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                 int gf = rs.getInt(1);
+                 int ga = rs.getInt(2);
+
+                System.out.println();
+                System.out.println("Team Name: " +teamName);
+                System.out.println("TEAM GF: " + gf);
+                System.out.println("TEAM GA: " + ga);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        } finally {
+            // close connections
+            try {
+                rs.close();
+                ps.close();
+                con.close();
+            } catch (SQLException e) {
+                // TODO: handle exception
+                System.out.println(e.toString());
+            }
+
+        }
+    }
+
 
     //Not finished
     @Override
