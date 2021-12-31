@@ -249,7 +249,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not finished
+    //NOT FINISHED
     @Override
     public Team getTeamByName(String teamName) {
         Team team = new Team();
@@ -297,7 +297,7 @@ public class TeamServiceImpl implements TeamService {
     }
 
 
-    //Not Needed
+    //NOT FINISHED
     @Override
     public void updateTeam(Team oldTeam) {
     }

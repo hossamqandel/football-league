@@ -24,5 +24,7 @@ public class TeamPrinter {
         System.out.print(" | Total Goals: " + player.getTotalGoals());
         System.out.print(" | Is Captain: " + player.isCaptain());
         System.out.print(" | Rank: " + player.getRank());
+        System.out.println();
+
     }
 }
